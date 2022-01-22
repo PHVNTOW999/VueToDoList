@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500&display=swap" rel="stylesheet">    
+    <link rel="icon" href="logo.png">
+    <title>Vue ToDoList</title>
+</head>
+
+<body>
+    <div id="app" class="app">
+        <h1 class="mainTitle">Vue ToDoList</h1>
+        <div class="addSection">
+            <input v-model="input" 
+            @keyup.enter="add" 
+            type="text" 
+            maxlength="30"
+            class="input" />
+            <div @click="add" class="addBtn">Add</div>
+        </div>
+        <div class="taskList">
+            <div v-for="(todo, i) in todos" :key="i" class="task animate__animated animate__zoomIn">
+                <input type="checkbox" 
+                :checked="todo.checked" 
+                @click="Done(i)" 
+                class="taskCheckbox">
+                <h1 :class="todo.comp">{{ todo.name }}</h1>
+                <div @click="Del(i)" class="del">Delet</div>
+            </div>
+        </div>
+    </div>
+    <a href="https://github.com/PHVNTOW999" target="_blank">
+        <h1 class="myPage">My Git</h1>
+    </a>
+    <style>
+        body {
+            margin: 0;
+            background-image: url(./bg-img.png);
+            font-family: 'Rubik', sans-serif;
+            color: #fff;
+        }
+
+        a {
+            color: #fff;
+        }
+
+        .app {
+            margin: 0 auto;
+            width: 800px;
+        }
+
+        .mainTitle {
+            margin: 10px 0 17px 0;
+            text-align: center;
+        }
+
+        .addSection {
+            width: 800px;
+            height: 40px;
+            max-height: 40px;
+        }
+
+        .input {
+            padding: 0;
+            width: 80%;
+            height: 40px;
+            outline: 0;
+            border: 0;
+            border-radius: 20px 0 0 20px;
+            float: left;
+        }
+
+        .input[type="text"] {
+            text-align: center;
+            font-size: 30px;
+            color: #000;
+        }
+
+        .addBtn {
+            width: 20%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-weight: 700;
+            background-color: #000;
+            transition-duration: 0.3s;
+            border-radius: 0 20px 20px 0;
+            color: #fff;
+            cursor: pointer;
+            float: right;
+        }
+
+        .addBtn:hover {
+            transition-duration: 0.3s;
+            background-color: #fff;
+            color: #000;
+        }
+
+        .taskList {
+            margin-top: 20px;
+        }
+
+        .task {
+            margin-bottom: 20px; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .taskCheckbox {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+
+        input[type="checkbox"] {
+            width: 40px;
+            border-radius: 5px;
+            color: #000;
+        }
+        
+        .del {
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            transition-duration: 0.3s;
+            background-color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #000;
+        }
+
+        .del:hover {
+            transition-duration: 0.3s;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .doneTask {
+            text-decoration: line-through;
+        }
+
+        .myPage {
+            margin: 0 auto;
+            width: 120px;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="App.js"></script>
+</body>
+
+</html>
